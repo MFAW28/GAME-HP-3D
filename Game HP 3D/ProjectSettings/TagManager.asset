@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - SwordWeapon
+  - Chest
+  - Enemy
+  - Sword
+  - Door
+  - EnemyHand
+  - Ground
+  - FireBallMage
+  - BulletGun
+  - Box
+  - Materi1
+  - Wall
+  - Materi2
+  - Materi3
+  - Materi4
+  - Materi5
+  - Materi6
+  - Materi7
+  - Door1
+  - Door2
+  - Door3
+  - Door4
+  - EndDoor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Weapons
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

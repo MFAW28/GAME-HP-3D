@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4190613989798516447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4190613989798516440}
+  - component: {fileID: 4190613989798516441}
+  m_Layer: 0
+  m_Name: QnA Prasyarat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4190613989798516440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190613989798516447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4190613989798516441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190613989798516447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49675271f65c7945b999b6754574a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QnA:
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 5b0cb3ab3a4ecc447a9000004bf36075,
+      type: 3}
+    AnswerText:
+    - 49
+    - 64
+    - 81
+    - 100
+    CorrectAnswerPrasyarat: 2
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 67dde4020b375fd47889f95ee77e01d2,
+      type: 3}
+    AnswerText:
+    - 144
+    - 122
+    - 169
+    - 196
+    CorrectAnswerPrasyarat: 1
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 9c197d442cfd7b64e8fb8e679a079a7a,
+      type: 3}
+    AnswerText:
+    - 225
+    - 22.5
+    - 2.25
+    - 0.25
+    CorrectAnswerPrasyarat: 3
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: d175cde9311570747a9915352421b46e,
+      type: 3}
+    AnswerText:
+    - 9
+    - 0.9
+    - 0.09
+    - 0.009
+    CorrectAnswerPrasyarat: 3
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 3b5a2bf5379f25847bc8197e07e57b96,
+      type: 3}
+    AnswerText:
+    - 169
+    - 196
+    - 265
+    - 256
+    CorrectAnswerPrasyarat: 4
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 72c626248e32d40448b395ec29aa083c,
+      type: 3}
+    AnswerText:
+    - 4
+    - 6
+    - 8
+    - 9
+    CorrectAnswerPrasyarat: 3
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 7841158c0173524438a428108d56cb7d,
+      type: 3}
+    AnswerText:
+    - 5
+    - 10
+    - 20
+    - 15
+    CorrectAnswerPrasyarat: 2
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 8492c3b8ac152bd4a97275dac51b6d25,
+      type: 3}
+    AnswerText:
+    - 11
+    - 12
+    - 13
+    - 14
+    CorrectAnswerPrasyarat: 2
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 6a42d1e5922019e4e9cffcc13490a213,
+      type: 3}
+    AnswerText:
+    - 11
+    - 12
+    - 13
+    - 14
+    CorrectAnswerPrasyarat: 4
+  - QuestionsImagePrasyarat: {fileID: 21300000, guid: 3106dded85f14aa49a1e2d93759b40be,
+      type: 3}
+    AnswerText:
+    - 13
+    - 14
+    - 15
+    - 16
+    CorrectAnswerPrasyarat: 3
