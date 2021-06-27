@@ -59,8 +59,8 @@ public class GameManagement : MonoBehaviour
             DeathUI.SetActive(true);
         }
 
-        scoreText.text = "Skor Kamu = " + scoreGame.Score;
-        maxScoreText.text = "Skor Maksimal =  " + scoreGame.MaxScore;
+        scoreText.text = "" + scoreGame.Score;
+        maxScoreText.text = "" + scoreGame.MaxScore;
     }
 
     public void openDoor()
@@ -76,12 +76,19 @@ public class GameManagement : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<Player>().offMove();
         ExitUI.SetActive(true);
+        ExitUI.GetComponent<Animator>().SetBool("EndAnim", true);
         GameIsPaused = true;
     }
 
     public void ResumeGame()
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        StartCoroutine(ResumeGameAnim());
+    }
+
+    IEnumerator ResumeGameAnim(){
+        ExitUI.GetComponent<Animator>().SetBool("EndAnim", false);
+        yield return new WaitForSeconds(.5f);
         ExitUI.SetActive(false);
         GameIsPaused = false;
     }

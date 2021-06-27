@@ -63,8 +63,8 @@ public class QuizManagement : MonoBehaviour
         if (!GameManagement.GameTutorial)
         {
             JawabanBenarTextGame.text = "Jawaban Benar = " + jawabanBenar;
-            JawabanBenarTextEnd.text = "Jawaban Benar = " + jawabanBenarFull;
-            JawabanSalahTextEnd.text = "Jawaban Salah = " + jawabanSalahFull;
+            JawabanBenarTextEnd.text = "= " + jawabanBenarFull;
+            JawabanSalahTextEnd.text = "" + jawabanSalahFull;
             if (spawner.Level1)
             {
                 qnAStudy = GameObject.Find("Quiz1").GetComponent<QnAStudy>();

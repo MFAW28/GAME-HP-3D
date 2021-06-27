@@ -292,6 +292,15 @@ public class WeaponsPlayer : MonoBehaviour
                 timerGun -= Time.deltaTime;
             }
         }
+
+        if(GameManagement.GameIsPaused){
+            allBtn.SetActive(false);
+        }else{
+            allBtn.SetActive(true);
+        }
+        if(GameManagement.GameEnd){
+            allBtn.SetActive(false);
+        }
     }
 
     //change Weapons
@@ -349,7 +358,6 @@ public class WeaponsPlayer : MonoBehaviour
     public void openChest()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        allBtn.SetActive(false);
         openChestBtn.SetActive(false);
         pickWeaponsUI.SetActive(true);
         GameManagement.GameIsPaused = true;
@@ -368,7 +376,6 @@ public class WeaponsPlayer : MonoBehaviour
 
     public void forUIButton()
     {
-        allBtn.SetActive(true);
         GameManagement.GameIsPaused = false;
     }
 
