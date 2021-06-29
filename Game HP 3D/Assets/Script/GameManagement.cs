@@ -11,6 +11,8 @@ public class GameManagement : MonoBehaviour
     public static bool GameTutorial;
     public static bool GameIsStarted;
     public static bool GameIsPaused;
+    public static bool GameWin;
+    public static bool GameLose;
 
     //pause in midgame
     [SerializeField] private GameObject ExitUI;
@@ -21,6 +23,7 @@ public class GameManagement : MonoBehaviour
     [SerializeField] private GameObject DeathUI;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text maxScoreText;
+    [SerializeField] private Text EndTextUI;
 
     private LoadLevel animLoadLevel;
     private Spawner spawner;
@@ -32,6 +35,8 @@ public class GameManagement : MonoBehaviour
         GameTutorial = false;
         GameIsPaused = false;
         GameEnd = false;
+        GameWin = false;
+        GameLose = false;
         countEnemy = 0;
 
         scoreGame = FindObjectOfType<ScoreController>();
@@ -57,6 +62,12 @@ public class GameManagement : MonoBehaviour
             }
             //scoreGame.Money += scoreGame.Score;
             DeathUI.SetActive(true);
+        }
+
+        if(GameWin){
+            EndTextUI.text = "KAMU MENANG";
+        }else if(GameLose){
+            EndTextUI.text = "KAMU KALAH";
         }
 
         scoreText.text = "" + scoreGame.Score;

@@ -27,6 +27,7 @@ public class playerhealth : MonoBehaviour
         if(healthPlayer <= 0)
         {
             GameManagement.GameEnd = true;
+            GameManagement.GameLose = true;
             PlayerDeath();
         }
     }
