@@ -70,7 +70,6 @@ public class GameManagement : MonoBehaviour
             //scoreGame.Money += scoreGame.Score;
             DeathUI.SetActive(true);
             scoreGame.ifWinGame();
-            scoreGame.SaveGame();
         }
 
 
@@ -110,6 +109,10 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<AudioManager>().StopPlay("SoundGame");
+        if (GameEnd)
+        {
+            scoreGame.SaveGame();
+        }
         StartCoroutine(RestartGameAnim());
     }
 
@@ -124,6 +127,10 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<AudioManager>().StopPlay("SoundGame");
+        if (GameEnd)
+        {
+            scoreGame.SaveGame();
+        }
         StartCoroutine(ExitGameAnim());
     }
 

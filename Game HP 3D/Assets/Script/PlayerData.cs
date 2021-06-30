@@ -10,6 +10,7 @@ public class PlayerData
     public int MoneyPlayer;
 
     public int DataLevel;
+    public int ScorePrasyarat;
 
     public PlayerData(MaterialController materialController)
     {

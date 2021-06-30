@@ -21,7 +21,10 @@ public class ScoreController : MonoBehaviour
     {
         Score = 0;
         LoadGame();
-        LevelthisGame = GetComponent<LocateLevel>();
+        if (!GameManagement.GameTutorial)
+        {
+            LevelthisGame = GetComponent<LocateLevel>();
+        }
     }
 
     private void Update()

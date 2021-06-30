@@ -104,7 +104,34 @@ public class WeaponsPlayer : MonoBehaviour
 
     void Update()
     {
-        if(!GameManagement.GameTutorial && GameManagement.GameIsStarted)
+        if (GameManagement.GameTutorial)
+        {
+            RaycastHit hitWeaponsTutorial;
+            if (Physics.Raycast(raycastPosition.transform.position, raycastPosition.transform.TransformDirection(Vector3.forward), out hitWeaponsTutorial, 5f))
+            {
+                if (hitWeaponsTutorial.collider.tag == "Chest")
+                {
+                    hitChest = true;
+                    chestScript = hitWeaponsTutorial.transform.gameObject.GetComponent<ChestScript>();
+                    if (Input.GetKeyDown(KeyCode.G))
+                    {
+                        allBtn.SetActive(false);
+                        pickWeaponsUI.SetActive(true);
+                    }
+                }
+                else
+                {
+                    hitChest = false;
+                }
+            }
+            else
+            {
+                hitChest = false;
+            }
+        }
+
+
+        if (!GameManagement.GameTutorial && GameManagement.GameIsStarted)
         {
             doorBtnUI.SetActive(true);
         }
@@ -155,6 +182,7 @@ public class WeaponsPlayer : MonoBehaviour
             }
         }
 
+        
         if (hitChest)
         {
             openChestBtn.SetActive(true);

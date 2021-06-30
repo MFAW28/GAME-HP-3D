@@ -7,10 +7,8 @@ public class Spawner : MonoBehaviour
 {
     private GameManagement GMGame;
 
+    public bool TimeSpawnEnemy;
     public GameObject EnemyPrefabs;
-    public float minTimeSpawnEnemy;
-    public float maxTimeSpawnEnemy;
-    private float timeToSpawnEnemy;
     public float maxEnemy;
 
     public GameObject ChestPrefabs;
@@ -25,28 +23,24 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         GMGame = FindObjectOfType<GameManagement>();
-
-        timeToSpawnEnemy = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
+        TimeSpawnEnemy = true;
+        timeToSpawnChest = 5;
     }
 
     private void Update()
     {
         if (GameManagement.GameIsStarted == false && GameManagement.GameIsPaused == false && GameManagement.GameEnd == false)
         {
-            if (GMGame.countEnemy < maxEnemy)
+            if (GMGame.countEnemy < maxEnemy && TimeSpawnEnemy)
             {
-                if (timeToSpawnEnemy < 0)
-                {
-                    SpawnEnemy();
-                }
-
-                else
-                {
-                    timeToSpawnEnemy -= Time.deltaTime;
-                }
+                SpawnEnemy();
+            }
+            if (GMGame.countEnemy == maxEnemy)
+            {
+                TimeSpawnEnemy = false;
             }
 
-            if(GMGame.countChest < 1)
+            if (GMGame.countChest < 1)
             {
                 if(timeToSpawnChest < 0)
                 {
@@ -68,7 +62,6 @@ public class Spawner : MonoBehaviour
         if (!Physics.CheckBox(RandomPosition, SizeBoxCollision))
         {
             Instantiate(EnemyPrefabs, RandomPosition, Quaternion.identity);
-            timeToSpawnEnemy = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
         }
         else
         {

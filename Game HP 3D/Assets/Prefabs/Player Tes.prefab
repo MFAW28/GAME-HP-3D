@@ -1685,8 +1685,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757095326666544069}
-  m_LocalRotation: {x: 0.092541374, y: -0.0000000035299423, z: -0.000000007705999,
-    w: 0.9957089}
+  m_LocalRotation: {x: 0.092936404, y: 0.000000005049604, z: -0.000000008505702, w: 0.9956721}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2266,10 +2265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorBtnUI: {fileID: 0}
-  doorBtnUI1: {fileID: 0}
-  doorBtnUI2: {fileID: 0}
-  doorBtnUI3: {fileID: 0}
-  doorBtnUI4: {fileID: 0}
   reachChest: {fileID: 8412407106195206847}
   doorBtnEnd: {fileID: 4031332763162416153}
   RaycastDistance: 5
@@ -4135,17 +4130,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2402577986206484878}
           m_MethodName: onJump
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 4979812998218917405}
-          m_MethodName: RunFast
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9557,8 +9541,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4029846222943714594}
-  m_LocalRotation: {x: 0.09254138, y: -0.000000003903518, z: -0.000000003686462, w: 0.9957088}
-  m_LocalPosition: {x: -19.75, y: 13.9, z: -124}
+  m_LocalRotation: {x: 0.09293642, y: 0.0000000046642743, z: -0.000000004484775, w: 0.99567205}
+  m_LocalPosition: {x: 0, y: 8.256066, z: -22.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2705117168679185976}
@@ -10953,8 +10937,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5046521470348339396}
-  m_LocalRotation: {x: 0.092541374, y: 0.0000000046627555, z: -0.000000004482617,
-    w: 0.9957089}
+  m_LocalRotation: {x: 0.092936404, y: 0.0000000046642743, z: -0.000000004484775,
+    w: 0.9956721}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18783,7 +18767,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8334846246780258130}
-  m_LocalRotation: {x: 0.092541374, y: 0.0000000059581335, z: -0.00000010979398, w: 0.9957089}
+  m_LocalRotation: {x: 0.09293641, y: 0.0000000060035448, z: -0.00000010980463, w: 0.9956721}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -153,6 +153,7 @@ public class Player : MonoBehaviour
     public void onJump()
     {
         RunBtn = true;
+        weaponsPlayer.RunFast();
     }
 
     public void offJump()

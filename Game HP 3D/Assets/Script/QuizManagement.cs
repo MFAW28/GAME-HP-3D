@@ -159,6 +159,7 @@ public class QuizManagement : MonoBehaviour
 
             jawabanBenar += 1;
             jawabanBenarFull += 1;
+            FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
             FindObjectOfType<Spawner>().ResetChest();
         }
         else
