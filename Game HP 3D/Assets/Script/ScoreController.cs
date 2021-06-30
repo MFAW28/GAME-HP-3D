@@ -8,15 +8,20 @@ public class ScoreController : MonoBehaviour
     public int Score;
     public int MaxScore;
     public int Money;
+    public int LevelGame;
 
     public Text TextScore;
     public Text TextMaxScore;
+    
+    private LocateLevel LevelthisGame;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Score = 0;
         LoadGame();
+        LevelthisGame = GetComponent<LocateLevel>();
     }
 
     private void Update()
@@ -29,7 +34,18 @@ public class ScoreController : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayerScore(this);
         MaxScore = data.MaxScorePlayer;
+        LevelGame = data.DataLevel;
         //Money = data.MoneyPlayer;
+    }
+
+    public void ifWinGame(){
+        if(LevelGame < LevelthisGame.Level){
+            LevelGame = LevelthisGame.NextLevel;
+        }
+        else
+        {
+            LevelGame = LevelthisGame.Level;
+        }
     }
 
     public void SaveGame()

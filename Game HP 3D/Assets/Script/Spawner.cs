@@ -10,41 +10,23 @@ public class Spawner : MonoBehaviour
     public GameObject EnemyPrefabs;
     public float minTimeSpawnEnemy;
     public float maxTimeSpawnEnemy;
-    private float timeToSpawn;
-    private float maxEnemy;
+    private float timeToSpawnEnemy;
+    public float maxEnemy;
 
     public GameObject ChestPrefabs;
+    public float timeToSpawnChest;
     public Vector3 SizeBoxCollision;
 
-    public bool Level1;
-    [SerializeField] private Vector3 center1;
-    [SerializeField] private Vector3 sizeBox1;
-
-    public bool Level2;
-    [SerializeField] private Vector3 center2;
-    [SerializeField] private Vector3 sizeBox2;
-
-    public bool Level3;
-    [SerializeField] private Vector3 center3;
-    [SerializeField] private Vector3 sizeBox3;
-
-    public bool Level4;
-    [SerializeField] private Vector3 center4;
-    [SerializeField] private Vector3 sizeBox4;
-
-    private Vector3 center;
-    private Vector3 sizeBox;
+    [SerializeField] private Vector3 center;
+    [SerializeField] private Vector3 sizeBox;
+    
     private Vector3 RandomPosition;
     
     private void Start()
     {
         GMGame = FindObjectOfType<GameManagement>();
 
-        Level1 = false;
-        Level2 = false;
-        Level3 = false;
-        Level4 = false;
-        timeToSpawn = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
+        timeToSpawnEnemy = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
     }
 
     private void Update()
@@ -53,19 +35,29 @@ public class Spawner : MonoBehaviour
         {
             if (GMGame.countEnemy < maxEnemy)
             {
-                if (timeToSpawn < 0)
+                if (timeToSpawnEnemy < 0)
                 {
                     SpawnEnemy();
                 }
 
                 else
                 {
-                    timeToSpawn -= Time.deltaTime;
+                    timeToSpawnEnemy -= Time.deltaTime;
+                }
+            }
+
+            if(GMGame.countChest < 1)
+            {
+                if(timeToSpawnChest < 0)
+                {
+                    SpawnChestPlace();
+                }
+                else
+                {
+                    timeToSpawnChest -= Time.deltaTime;
                 }
             }
         }
-
-        SpawnPlace();
     }
 
     void SpawnEnemy()
@@ -76,51 +68,12 @@ public class Spawner : MonoBehaviour
         if (!Physics.CheckBox(RandomPosition, SizeBoxCollision))
         {
             Instantiate(EnemyPrefabs, RandomPosition, Quaternion.identity);
-            timeToSpawn = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
+            timeToSpawnEnemy = Random.Range(minTimeSpawnEnemy, maxTimeSpawnEnemy);
         }
         else
         {
             SpawnEnemy();
         }
-    }
-
-    void SpawnPlace()
-    {
-        if (Level1 == true)
-        {
-            maxEnemy = 4;
-            center = center1;
-            sizeBox = sizeBox1;
-        }
-        if (Level2 == true)
-        {
-            maxEnemy = 6;
-            center = center2;
-            sizeBox = sizeBox2;
-        }
-        if (Level3 == true)
-        {
-            maxEnemy = 8;
-            center = center3;
-            sizeBox = sizeBox3;
-        }
-        if (Level4 == true)
-        {
-            maxEnemy = 10;
-            center = center4;
-            sizeBox = sizeBox4;
-        }
-    }
-
-    public void SpawnChest()
-    {
-        StartCoroutine(SpawnChestTime());
-    }
-
-    IEnumerator SpawnChestTime()
-    {
-        yield return new WaitForSeconds(5f);
-        SpawnChestPlace();
     }
 
     private void SpawnChestPlace()
@@ -131,6 +84,8 @@ public class Spawner : MonoBehaviour
         if (!Physics.CheckBox(RandomPosition, SizeBoxCollision))
         {
             Instantiate(ChestPrefabs, RandomPosition, Quaternion.identity);
+            GMGame.countChest += 1;
+            timeToSpawnChest = 5;
         }
         else
         {
@@ -144,38 +99,11 @@ public class Spawner : MonoBehaviour
         Gizmos.DrawCube(center, sizeBox);
     }
 
-    public void OpenDoor2()
-    {
-        Level1 = false;
-        Level2 = true;
-        Level3 = false;
-        Level4 = false;
-        ResetChest();
-    }
-
-    public void OpenDoor3()
-    {
-        Level1 = false;
-        Level2 = false;
-        Level3 = true;
-        Level4 = false;
-        ResetChest();
-    }
-
-    public void OpenDoor4()
-    {
-        Level1 = false;
-        Level2 = false;
-        Level3 = false;
-        Level4 = true;
-        ResetChest();
-    }
-
-    private void ResetChest()
+    public void ResetChest()
     {
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<ChestScript>().DestroyChest();
         FindObjectOfType<QuizManagement>().ResetJawabanBenar();
-        SpawnChest();
+        GMGame.countChest -= 1;
     }
 }

@@ -8,10 +8,6 @@ public class WeaponsPlayer : MonoBehaviour
     [Header("DoorUI")]
     //Get the door -------------------------------------------------------
     [SerializeField] private GameObject doorBtnUI;
-    [SerializeField] private GameObject doorBtnUI1;
-    [SerializeField] private GameObject doorBtnUI2;
-    [SerializeField] private GameObject doorBtnUI3;
-    [SerializeField] private GameObject doorBtnUI4;
     [SerializeField] private GameObject reachChest;
     [SerializeField] private GameObject doorBtnEnd;
     private QuizManagement quizManagement;
@@ -76,7 +72,6 @@ public class WeaponsPlayer : MonoBehaviour
     [SerializeField] private RectTransform AttackBtnHandle;
     [SerializeField] private Image AttackHealthImage;
 
-    private bool DestroyChest;
     private ChestScript chestScript;
 
     float timersword = 1;
@@ -86,11 +81,11 @@ public class WeaponsPlayer : MonoBehaviour
     private void Start()
     {
         HealthBarWeapons.SetActive(false);
-        doorBtnUI.SetActive(false);
         pickWeaponsUI.SetActive(false);
         attackBtnUI.SetActive(false);
         openChestBtn.SetActive(false);
         allBtn.SetActive(true);
+        reachChest.SetActive(true);
         SwordReady = false;
         StaffMageReady = false;
         GunReady = false;
@@ -109,124 +104,55 @@ public class WeaponsPlayer : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hitWeapons;
-        if (Physics.Raycast(raycastPosition.transform.position, raycastPosition.transform.TransformDirection(Vector3.forward), out hitWeapons, 5f))
+        if(!GameManagement.GameTutorial && GameManagement.GameIsStarted)
         {
-            if (hitWeapons.collider.tag == "Chest")
+            doorBtnUI.SetActive(true);
+        }
+
+        if (!GameManagement.GameIsStarted)
+        {
+            RaycastHit hitWeapons;
+            if (Physics.Raycast(raycastPosition.transform.position, raycastPosition.transform.TransformDirection(Vector3.forward), out hitWeapons, 5f))
             {
-                hitChest = true;
-                chestScript = hitWeapons.transform.gameObject.GetComponent<ChestScript>();
-                if (Input.GetKeyDown(KeyCode.G))
+                if (hitWeapons.collider.tag == "Chest")
                 {
-                    allBtn.SetActive(false);
-                    pickWeaponsUI.SetActive(true);
+                    hitChest = true;
+                    chestScript = hitWeapons.transform.gameObject.GetComponent<ChestScript>();
+                    if (Input.GetKeyDown(KeyCode.G))
+                    {
+                        allBtn.SetActive(false);
+                        pickWeaponsUI.SetActive(true);
+                    }
                 }
+                else
+                {
+                    hitChest = false;
+                }
+
+                if (hitWeapons.collider.tag == "EndDoor")
+                {
+                    if (quizManagement.jawabanBenar > 4)
+                    {
+                        doorBtnEnd.SetActive(true);
+                    }
+                    else
+                    {
+                        reachChest.SetActive(true);
+                    }
+                }
+                else
+                {
+                    doorBtnEnd.SetActive(false);
+                }
+
             }
             else
             {
                 hitChest = false;
-            }
-
-            if (hitWeapons.collider.tag == "Door")
-            {
-                doorBtnUI.SetActive(true);
-            }
-            else
-            {
                 doorBtnUI.SetActive(false);
-            }
-
-            if (hitWeapons.collider.tag == "Door1")
-            {
-                if (quizManagement.jawabanBenar > 4)
-                {
-                    doorBtnUI1.SetActive(true);
-                }
-                else
-                {
-                    reachChest.SetActive(true);
-                }
-            }
-            else
-            {
-                doorBtnUI1.SetActive(false);
-            }
-
-            if (hitWeapons.collider.tag == "Door2")
-            {
-                if (quizManagement.jawabanBenar > 4)
-                {
-                    doorBtnUI2.SetActive(true);
-                }
-                else
-                {
-                    reachChest.SetActive(true);
-                }
-            }
-            else
-            {
-                doorBtnUI2.SetActive(false);
-            }
-
-            if (hitWeapons.collider.tag == "Door3")
-            {
-                if (quizManagement.jawabanBenar > 4)
-                {
-                    doorBtnUI3.SetActive(true);
-                }
-                else
-                {
-                    reachChest.SetActive(true);
-                }
-            }
-            else
-            {
-                doorBtnUI3.SetActive(false);
-            }
-
-            if (hitWeapons.collider.tag == "Door4")
-            {
-                if (quizManagement.jawabanBenar > 4)
-                {
-                    doorBtnUI4.SetActive(true);
-                }
-                else
-                {
-                    reachChest.SetActive(true);
-                }
-            }
-            else
-            {
-                doorBtnUI4.SetActive(false);
-            }
-
-            if (hitWeapons.collider.tag == "EndDoor")
-            {
-                if (quizManagement.jawabanBenar > 4)
-                {
-                    doorBtnEnd.SetActive(true);
-                }
-                else
-                {
-                    reachChest.SetActive(true);
-                }
-            }
-            else
-            {
                 doorBtnEnd.SetActive(false);
+                reachChest.SetActive(false);
             }
-
-        }
-        else
-        {
-            hitChest = false;
-            doorBtnUI.SetActive(false);
-            doorBtnUI1.SetActive(false);
-            doorBtnUI2.SetActive(false);
-            doorBtnUI3.SetActive(false);
-            doorBtnUI4.SetActive(false);
-            doorBtnEnd.SetActive(false);
-            reachChest.SetActive(false);
         }
 
         if (hitChest)

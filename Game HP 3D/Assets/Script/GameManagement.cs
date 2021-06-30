@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManagement : MonoBehaviour
 {
     public int countEnemy;
+    public int countChest;
 
     public static bool GameTutorial;
     public static bool GameIsStarted;
@@ -55,20 +56,23 @@ public class GameManagement : MonoBehaviour
         if(GameEnd == true)
         {
             GameIsPaused = true;
+            if(GameWin){
+                EndTextUI.text = "KAMU MENANG";
+            }
+            if(GameLose){
+                EndTextUI.text = "KAMU KALAH";
+            }
             if(scoreGame.Score > scoreGame.MaxScore)
             {
+                
                 scoreGame.MaxScore = scoreGame.Score;
-                scoreGame.SaveGame();
             }
             //scoreGame.Money += scoreGame.Score;
             DeathUI.SetActive(true);
+            scoreGame.ifWinGame();
+            scoreGame.SaveGame();
         }
 
-        if(GameWin){
-            EndTextUI.text = "KAMU MENANG";
-        }else if(GameLose){
-            EndTextUI.text = "KAMU KALAH";
-        }
 
         scoreText.text = "" + scoreGame.Score;
         maxScoreText.text = "" + scoreGame.MaxScore;
@@ -78,8 +82,6 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         GameIsStarted = false;
-        spawner.Level1 = true;
-        spawner.SpawnChest();
     }
 
     public void ExitButton()
@@ -108,7 +110,6 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<AudioManager>().StopPlay("SoundGame");
-        scoreGame.SaveGame();
         StartCoroutine(RestartGameAnim());
     }
 
@@ -123,7 +124,6 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         FindObjectOfType<AudioManager>().StopPlay("SoundGame");
-        scoreGame.SaveGame();
         StartCoroutine(ExitGameAnim());
     }
 
@@ -138,5 +138,6 @@ public class GameManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         GameEnd = true;
+        GameWin = true;
     }
 }

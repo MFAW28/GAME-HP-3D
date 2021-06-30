@@ -9,6 +9,8 @@ public class PlayerData
     public int NumMaterialPlayer;
     public int MoneyPlayer;
 
+    public int DataLevel;
+
     public PlayerData(MaterialController materialController)
     {
         NumMaterialPlayer = materialController.NumofMaterial;

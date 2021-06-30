@@ -12,6 +12,7 @@ public class QuizManagement : MonoBehaviour
     public GameObject PembahasanPrefabs;
     public GameObject CanvasPembahasan;
 
+    public int NilaiJawabBenar;
     public Image questionsImage;
     public int jawabanBenar;
     public int jawabanBenarFull;
@@ -65,22 +66,7 @@ public class QuizManagement : MonoBehaviour
             JawabanBenarTextGame.text = "Jawaban Benar = " + jawabanBenar;
             JawabanBenarTextEnd.text = "= " + jawabanBenarFull;
             JawabanSalahTextEnd.text = "" + jawabanSalahFull;
-            if (spawner.Level1)
-            {
-                qnAStudy = GameObject.Find("Quiz1").GetComponent<QnAStudy>();
-            }
-            if (spawner.Level2)
-            {
-                qnAStudy = GameObject.Find("Quiz2").GetComponent<QnAStudy>();
-            }
-            if (spawner.Level3)
-            {
-                qnAStudy = GameObject.Find("Quiz3").GetComponent<QnAStudy>();
-            }
-            if (spawner.Level4)
-            {
-                qnAStudy = GameObject.Find("Quiz4").GetComponent<QnAStudy>();
-            }
+            qnAStudy = FindObjectOfType<QnAStudy>();
         }
     }
     
@@ -169,26 +155,11 @@ public class QuizManagement : MonoBehaviour
 
         if (!GameManagement.GameIsStarted)
         {
-            if (spawner.Level1)
-            {
-                scoreGame.Score += 20;
-            }
-            if (spawner.Level2)
-            {
-                scoreGame.Score += 40;
-            }
-            if (spawner.Level3)
-            {
-                scoreGame.Score += 60;
-            }
-            if (spawner.Level4)
-            {
-                scoreGame.Score += 100;
-            }
+            scoreGame.Score += NilaiJawabBenar;
 
             jawabanBenar += 1;
             jawabanBenarFull += 1;
-            FindObjectOfType<Spawner>().SpawnChest();
+            FindObjectOfType<Spawner>().ResetChest();
         }
         else
         {
@@ -212,7 +183,7 @@ public class QuizManagement : MonoBehaviour
         if (!GameManagement.GameIsStarted)
         {
             jawabanSalahFull += 1;
-            FindObjectOfType<Spawner>().SpawnChest();
+            FindObjectOfType<Spawner>().ResetChest();
         }
     }
 
