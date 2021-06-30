@@ -34,6 +34,7 @@ public class MateriManagement : MonoBehaviour
 
     private void Start()
     {
+        GameManagement.GamePlay = true;
         GameManagement.GameTutorial = true;
         FindObjectOfType<AudioManager>().Play("SoundPembukaan");
         AllButtonUI.SetActive(true);

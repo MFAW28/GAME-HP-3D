@@ -9,6 +9,7 @@ public class GameManagement : MonoBehaviour
     public int countEnemy;
     public int countChest;
 
+    public static bool GamePlay;
     public static bool GameTutorial;
     public static bool GameIsStarted;
     public static bool GameIsPaused;
@@ -31,50 +32,57 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("SoundGame");
-        GameIsStarted = true;
-        GameTutorial = false;
-        GameIsPaused = false;
-        GameEnd = false;
-        GameWin = false;
-        GameLose = false;
-        countEnemy = 0;
+        if (GamePlay)
+        {
+            FindObjectOfType<AudioManager>().Play("SoundGame");
+            GameIsStarted = true;
+            GameTutorial = false;
+            GameIsPaused = false;
+            GameEnd = false;
+            GameWin = false;
+            GameLose = false;
+            countEnemy = 0;
 
-        scoreGame = FindObjectOfType<ScoreController>();
-        ExitUI.SetActive(false);
-        DeathUI.SetActive(false);
-        MaterialController material = FindObjectOfType<MaterialController>();
-        material.LoadPlayerData();
-        scoreGame.LoadGame();
+            scoreGame = FindObjectOfType<ScoreController>();
+            ExitUI.SetActive(false);
+            DeathUI.SetActive(false);
+            MaterialController material = FindObjectOfType<MaterialController>();
+            material.LoadPlayerData();
+            scoreGame.LoadGame();
 
-        animLoadLevel = FindObjectOfType<LoadLevel>();
-        spawner = FindObjectOfType<Spawner>();
+            animLoadLevel = FindObjectOfType<LoadLevel>();
+            spawner = FindObjectOfType<Spawner>();
+        }
     }
 
     void Update()
     {
-        if(GameEnd == true)
+        if (GamePlay)
         {
-            GameIsPaused = true;
-            if(GameWin){
-                EndTextUI.text = "KAMU MENANG";
-            }
-            if(GameLose){
-                EndTextUI.text = "KAMU KALAH";
-            }
-            if(scoreGame.Score > scoreGame.MaxScore)
+            if (GameEnd == true)
             {
-                
-                scoreGame.MaxScore = scoreGame.Score;
+                GameIsPaused = true;
+                if (GameWin)
+                {
+                    EndTextUI.text = "KAMU MENANG";
+                }
+                if (GameLose)
+                {
+                    EndTextUI.text = "KAMU KALAH";
+                }
+                if (scoreGame.Score > scoreGame.MaxScore)
+                {
+
+                    scoreGame.MaxScore = scoreGame.Score;
+                }
+                //scoreGame.Money += scoreGame.Score;
+                DeathUI.SetActive(true);
+                scoreGame.ifWinGame();
             }
-            //scoreGame.Money += scoreGame.Score;
-            DeathUI.SetActive(true);
-            scoreGame.ifWinGame();
+
+            scoreText.text = "" + scoreGame.Score;
+            maxScoreText.text = "" + scoreGame.MaxScore;
         }
-
-
-        scoreText.text = "" + scoreGame.Score;
-        maxScoreText.text = "" + scoreGame.MaxScore;
     }
 
     public void openDoor()

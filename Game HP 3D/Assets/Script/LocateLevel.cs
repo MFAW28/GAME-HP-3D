@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class LocateLevel : MonoBehaviour
 {
+   
     public int Level;
     public int NextLevel;
-    
+
+    private void Start()
+    {
+        GameManagement.GamePlay = true;
+    }
 }

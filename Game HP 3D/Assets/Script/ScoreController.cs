@@ -9,6 +9,7 @@ public class ScoreController : MonoBehaviour
     public int MaxScore;
     public int Money;
     public int LevelGame;
+    public int ScorePrasyarat;
 
     public Text TextScore;
     public Text TextMaxScore;
@@ -29,8 +30,11 @@ public class ScoreController : MonoBehaviour
 
     private void Update()
     {
-        TextScore.text = "Skor : " + Score;
-        TextMaxScore.text = "Maks Skor : " + MaxScore;
+        if (GameManagement.GamePlay)
+        {
+            TextScore.text = "Skor : " + Score;
+            TextMaxScore.text = "Maks Skor : " + MaxScore;
+        }
     }
 
     public void LoadGame()

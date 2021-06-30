@@ -11115,7 +11115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &809046960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14845,7 +14845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1267049270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15825,6 +15825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486976022}
   - component: {fileID: 1486976021}
+  - component: {fileID: 1486976023}
   m_Layer: 0
   m_Name: MenuManagement
   m_TagString: Untagged
@@ -15849,6 +15850,9 @@ MonoBehaviour:
   CustomizeUI: {fileID: 722617957}
   PickMapUI: {fileID: 1511433704}
   ProfilUI: {fileID: 1604087341}
+  ScorePrasyarat: 0
+  LevelGet: 0
+  MinimumScorePrasyarat: 0
   SKKIKDUI: {fileID: 748904361}
   MainMenuUI: {fileID: 1161680516}
   PrasyaratUI: {fileID: 540838191}
@@ -15866,6 +15870,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486976023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486976020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0065a8640b56b40b53bf0179d03117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  MaxScore: 0
+  Money: 0
+  LevelGame: 0
+  ScorePrasyarat: 0
+  TextScore: {fileID: 0}
+  TextMaxScore: {fileID: 0}
 --- !u!1001 &1507453026
 PrefabInstance:
   m_ObjectHideFlags: 0

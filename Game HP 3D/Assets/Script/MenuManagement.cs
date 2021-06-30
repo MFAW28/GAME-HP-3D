@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManagement : MonoBehaviour
 {
@@ -11,11 +12,20 @@ public class MenuManagement : MonoBehaviour
     [SerializeField] private GameObject PickMapUI;
     [SerializeField] private GameObject ProfilUI;
 
+    public int ScorePrasyarat;
+    public int LevelGet;
+    public int MinimumScorePrasyarat;
+
+    public Button BtnMateriIn;
+    public Button BtnPlayIn;
+    public Button[] BtnLevelPickUI;
+
     public GameObject SKKIKDUI;
     public GameObject MainMenuUI;
     public GameObject PrasyaratUI;
 
     private LoadLevel animLoadLevel;
+    private ScoreController scoreController;
 
     void Start()
     {
@@ -30,6 +40,43 @@ public class MenuManagement : MonoBehaviour
         ProfilUI.SetActive(false);
 
         animLoadLevel = FindObjectOfType<LoadLevel>();
+        scoreController = GetComponent<ScoreController>();
+
+        ScorePrasyarat = scoreController.ScorePrasyarat;
+        LevelGet = scoreController.LevelGame;
+    }
+
+    private void Update()
+    {
+        if(ScorePrasyarat >= MinimumScorePrasyarat)
+        {
+            BtnPlayIn.interactable = true;
+            BtnMateriIn.interactable = true;
+        }
+        else
+        {
+            BtnPlayIn.interactable = false;
+            BtnMateriIn.interactable = false;
+        }
+
+        if(LevelGet == 0)
+        {
+            BtnLevelPickUI[0].interactable = true;
+            BtnLevelPickUI[1].interactable = false;
+            BtnLevelPickUI[2].interactable = false;
+        }
+        else if (LevelGet == 1)
+        {
+            BtnLevelPickUI[0].interactable = true;
+            BtnLevelPickUI[1].interactable = true;
+            BtnLevelPickUI[2].interactable = false;
+        }
+        else if(LevelGet == 2)
+        {
+            BtnLevelPickUI[0].interactable = true;
+            BtnLevelPickUI[1].interactable = true;
+            BtnLevelPickUI[2].interactable = true;
+        }
     }
 
     public void NewGame()
