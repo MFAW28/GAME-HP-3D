@@ -12,20 +12,25 @@ public class MenuManagement : MonoBehaviour
     [SerializeField] private GameObject PickMapUI;
     [SerializeField] private GameObject ProfilUI;
 
+    public Text scorePrasyaratTextMenu;
+    public Text scorePrasyaratTextMateri;
+
     public int ScorePrasyarat;
     public int LevelGet;
     public int MinimumScorePrasyarat;
 
-    public Button BtnMateriIn;
-    public Button BtnPlayIn;
     public Button[] BtnLevelPickUI;
 
     public GameObject SKKIKDUI;
     public GameObject MainMenuUI;
     public GameObject PrasyaratUI;
 
+    public GameObject HintUIPrefabs;
+
     private LoadLevel animLoadLevel;
     private ScoreController scoreController;
+
+    public Button[] BtnChangeColor;
 
     void Start()
     {
@@ -44,55 +49,94 @@ public class MenuManagement : MonoBehaviour
 
         ScorePrasyarat = scoreController.ScorePrasyarat;
         LevelGet = scoreController.LevelGame;
+        scorePrasyaratTextMenu.text = "Skor Prasyarat = " + ScorePrasyarat;
+        scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
     }
 
     private void Update()
     {
-        if(ScorePrasyarat >= MinimumScorePrasyarat)
-        {
-            BtnPlayIn.interactable = true;
-            BtnMateriIn.interactable = true;
-        }
-        else
-        {
-            BtnPlayIn.interactable = false;
-            BtnMateriIn.interactable = false;
-        }
-
-        if(LevelGet == 0)
+        if (LevelGet == 0)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = false;
             BtnLevelPickUI[2].interactable = false;
+            BtnChangeColor[0].interactable = true;
+            BtnChangeColor[1].interactable = false;
+            BtnChangeColor[2].interactable = false;
+
         }
         else if (LevelGet == 1)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = true;
             BtnLevelPickUI[2].interactable = false;
+
+            BtnChangeColor[0].interactable = true;
+            BtnChangeColor[1].interactable = false;
+            BtnChangeColor[2].interactable = false;
         }
-        else if(LevelGet == 2)
+        else if (LevelGet == 2)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = true;
             BtnLevelPickUI[2].interactable = true;
+
+            BtnChangeColor[0].interactable = true;
+            BtnChangeColor[1].interactable = false;
+            BtnChangeColor[2].interactable = false;
+        }
+        else if (LevelGet > 3)
+        {
+            BtnLevelPickUI[0].interactable = true;
+            BtnLevelPickUI[1].interactable = true;
+            BtnLevelPickUI[2].interactable = true;
+
+            BtnChangeColor[0].interactable = true;
+            BtnChangeColor[1].interactable = true;
+            BtnChangeColor[2].interactable = true;
         }
     }
 
     public void NewGame()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
-        MaterialController materialController = FindObjectOfType<MaterialController>();
-        materialController.PickColour();
-        StartCoroutine(NewGameAnim());
+        if (ScorePrasyarat >= MinimumScorePrasyarat)
+        {
+            FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
+            MaterialController materialController = FindObjectOfType<MaterialController>();
+            materialController.PickColour();
+            StartCoroutine(NewGameAnim());
+        }
+        else
+        {
+            GameObject objUI = Instantiate(HintUIPrefabs, new Vector3(0, 0, 0), Quaternion.identity);
+            objUI.transform.SetParent(MenuUI.transform, false);
+            Destroy(objUI, 1.5f);
+        }
     }
 
     IEnumerator NewGameAnim()
     {
+        animLoadLevel.animLevel.SetTrigger("NextUI");
+        yield return new WaitForSeconds(1f);
+        MenuUI.SetActive(false);
+        MateriUI.SetActive(false);
+        CustomizeUI.SetActive(false);
+        PickMapUI.SetActive(true);
+        ProfilUI.SetActive(false);
+    }
+
+    public void gotoLevel(string LevelName)
+    {
+        FindObjectOfType<AudioManager>().Play("Button");
+        StartCoroutine(gotoLevelAnim(LevelName));
+    }
+
+    IEnumerator gotoLevelAnim(string LevelName)
+    {
         animLoadLevel.animLevel.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Map3");
+        SceneManager.LoadScene(LevelName);
     }
 
     public void Materi()
@@ -166,15 +210,25 @@ public class MenuManagement : MonoBehaviour
         yield return new WaitForSeconds(1f);
         MainMenuUI.SetActive(true);
         PrasyaratUI.SetActive(false);
+        scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
     }
 
     public void PhytagorasMateri()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
-        MaterialController materialController = FindObjectOfType<MaterialController>();
-        materialController.PickColour();
-        StartCoroutine(PhytagorasMateriAnim());
+        if (ScorePrasyarat >= MinimumScorePrasyarat)
+        {
+            FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
+            MaterialController materialController = FindObjectOfType<MaterialController>();
+            materialController.PickColour();
+            StartCoroutine(PhytagorasMateriAnim());
+        }
+        else
+        {
+            GameObject objUI = Instantiate(HintUIPrefabs, new Vector3(0, 0, 0), Quaternion.identity);
+            objUI.transform.SetParent(MateriUI.transform, false);
+            Destroy(objUI, 1.5f);
+        }
     }
 
     IEnumerator PhytagorasMateriAnim()
@@ -247,6 +301,9 @@ public class MenuManagement : MonoBehaviour
         CustomizeUI.SetActive(false);
         PickMapUI.SetActive(false);
         ProfilUI.SetActive(false);
+        ScorePrasyarat = scoreController.ScorePrasyarat;
+        scorePrasyaratTextMenu.text = "Skor Prasyarat = " + ScorePrasyarat;
+        scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
     }
 
     public void QuitGame()

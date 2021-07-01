@@ -72,6 +72,12 @@ public class WeaponsPlayer : MonoBehaviour
     [SerializeField] private RectTransform AttackBtnHandle;
     [SerializeField] private Image AttackHealthImage;
 
+    [Space(10)]
+    [Header("Button Attack Settings")]
+    [SerializeField] private GameObject ButtonSword;
+    [SerializeField] private GameObject ButtonMage;
+    [SerializeField] private GameObject ButtonGun;
+
     private ChestScript chestScript;
 
     float timersword = 1;
@@ -127,6 +133,31 @@ public class WeaponsPlayer : MonoBehaviour
             else
             {
                 hitChest = false;
+            }
+
+            ButtonSword.SetActive(true);
+            ButtonMage.SetActive(true);
+            ButtonGun.SetActive(true);
+        }
+        else
+        {
+            if(FindObjectOfType<ScoreController>().LevelGame == 0)
+            {
+                ButtonSword.SetActive(true);
+                ButtonMage.SetActive(false);
+                ButtonGun.SetActive(false);
+            }
+            else if (FindObjectOfType<ScoreController>().LevelGame == 1)
+            {
+                ButtonSword.SetActive(true);
+                ButtonMage.SetActive(false);
+                ButtonGun.SetActive(true);
+            }
+            else if (FindObjectOfType<ScoreController>().LevelGame > 1)
+            {
+                ButtonSword.SetActive(true);
+                ButtonMage.SetActive(true);
+                ButtonGun.SetActive(true);
             }
         }
 

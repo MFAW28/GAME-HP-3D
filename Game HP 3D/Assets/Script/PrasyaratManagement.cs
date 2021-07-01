@@ -69,6 +69,11 @@ public class PrasyaratManagement : MonoBehaviour
         MateriPrasyarat.SetActive(false);
         TestPrasyarat.SetActive(false);
         HasilTestPrasyarat.SetActive(true);
+        if(score >= FindObjectOfType<ScoreController>().ScorePrasyarat)
+        {
+            FindObjectOfType<ScoreController>().ScorePrasyarat = score;
+            FindObjectOfType<ScoreController>().SaveGame();
+        }
     }
 
     public void RestartTest()
