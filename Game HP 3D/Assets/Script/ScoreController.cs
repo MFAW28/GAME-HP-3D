@@ -20,7 +20,6 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Score = 0;
         LoadGame();
         if (!GameManagement.GameTutorial)
         {
@@ -40,6 +39,7 @@ public class ScoreController : MonoBehaviour
     public void LoadGame()
     {
         PlayerData data = SaveSystem.LoadPlayerScore(this);
+        Score = data.ScoreGame;
         MaxScore = data.MaxScorePlayer;
         LevelGame = data.DataLevel;
         //Money = data.MoneyPlayer;

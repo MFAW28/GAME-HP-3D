@@ -109,7 +109,7 @@ public class EnemyControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Sword"))
         {
-            FindObjectOfType<ScoreController>().Score += 3;
+            FindObjectOfType<ScoreController>().Score += 2;
             GameObject effectDead = Instantiate(deadEffectEnemy, transform.position, Quaternion.identity);
             Destroy(effectDead, 1.5f);
             enemyDestroy();
@@ -120,7 +120,7 @@ public class EnemyControl : MonoBehaviour
         }
         if (other.gameObject.CompareTag("FireBallMage"))
         {
-            FindObjectOfType<ScoreController>().Score += 1;
+            FindObjectOfType<ScoreController>().Score += 5;
             GameObject effectDead = Instantiate(deadEffectEnemy, transform.position, Quaternion.identity);
             Destroy(effectDead, 1.5f);
             enemyDestroy();

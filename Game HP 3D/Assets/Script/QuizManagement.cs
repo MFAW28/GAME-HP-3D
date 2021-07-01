@@ -67,6 +67,11 @@ public class QuizManagement : MonoBehaviour
             JawabanBenarTextEnd.text = "= " + jawabanBenarFull;
             JawabanSalahTextEnd.text = "" + jawabanSalahFull;
             qnAStudy = FindObjectOfType<QnAStudy>();
+            if (qnAStudy.QnA.Count < 0)
+            {
+                FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
+                FindObjectOfType<Spawner>().maxEnemy = 10;
+            }
         }
     }
     
@@ -160,7 +165,10 @@ public class QuizManagement : MonoBehaviour
             jawabanBenar += 1;
             jawabanBenarFull += 1;
             FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
-            FindObjectOfType<Spawner>().ResetChest();
+            if (qnAStudy.QnA.Count > 0)
+            {
+                FindObjectOfType<Spawner>().ResetChest();
+            }
         }
         else
         {

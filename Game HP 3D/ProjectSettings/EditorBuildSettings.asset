@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MapStudy.unity
     guid: 5b63ef30eef6c464e9c4b766cd9f4442
   - enabled: 1
-    path: Assets/Scenes/Map3.unity
-    guid: be759e6cf11b7e14ebe0f7e671c986e8
-  - enabled: 1
     path: Assets/Scenes/TesLatihan.unity
     guid: 849c8552f07bca2449cfc85d3c85f45d
+  - enabled: 1
+    path: Assets/Scenes/Map_1.unity
+    guid: 1c1031927bb8e9e4d84aafd208a0375e
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

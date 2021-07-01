@@ -8,6 +8,7 @@ public class PlayerData
     public int MaxScorePlayer;
     public int NumMaterialPlayer;
     public int MoneyPlayer;
+    public int ScoreGame;
 
     public int DataLevel;
     public int ScorePrasyarat;

@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
 
     public bool TimeSpawnEnemy;
     public GameObject EnemyPrefabs;
+    public float CountEnemyMax;
     public float maxEnemy;
 
     public GameObject ChestPrefabs;
@@ -25,6 +26,7 @@ public class Spawner : MonoBehaviour
         GMGame = FindObjectOfType<GameManagement>();
         TimeSpawnEnemy = true;
         timeToSpawnChest = 5;
+        maxEnemy = CountEnemyMax;
     }
 
     private void Update()

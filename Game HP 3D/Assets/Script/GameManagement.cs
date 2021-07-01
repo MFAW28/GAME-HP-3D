@@ -22,10 +22,12 @@ public class GameManagement : MonoBehaviour
     //gameEnd
     private ScoreController scoreGame;
     public static bool GameEnd;
+    public GameObject BtnNextLevel;
     [SerializeField] private GameObject DeathUI;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text maxScoreText;
     [SerializeField] private Text EndTextUI;
+    [SerializeField] private GameObject GiftText;
 
     private LoadLevel animLoadLevel;
     private Spawner spawner;
@@ -46,9 +48,10 @@ public class GameManagement : MonoBehaviour
             scoreGame = FindObjectOfType<ScoreController>();
             ExitUI.SetActive(false);
             DeathUI.SetActive(false);
+            BtnNextLevel.SetActive(false);
+            GiftText.SetActive(false);
             MaterialController material = FindObjectOfType<MaterialController>();
             material.LoadPlayerData();
-            scoreGame.LoadGame();
 
             animLoadLevel = FindObjectOfType<LoadLevel>();
             spawner = FindObjectOfType<Spawner>();
@@ -64,10 +67,25 @@ public class GameManagement : MonoBehaviour
                 GameIsPaused = true;
                 if (GameWin)
                 {
+                    BtnNextLevel.SetActive(true);
+                    GiftText.SetActive(true);
                     EndTextUI.text = "KAMU MENANG";
+                    if(scoreGame.LevelGame == 1)
+                    {
+                        GiftText.GetComponent<Text>().text = "Kamu mendapatkan senjata Pistol";
+                    }else if(scoreGame.LevelGame == 2)
+                    {
+                        GiftText.GetComponent<Text>().text = "Kamu mendapatkan senjata Sihir";
+                    }
+                    else if (scoreGame.LevelGame == 3)
+                    {
+                        GiftText.GetComponent<Text>().text = "Kamu mendapatkan semua warna pakaian di Kostum Pemain";
+                    }
                 }
                 if (GameLose)
                 {
+                    BtnNextLevel.SetActive(false);
+                    GiftText.SetActive(false);
                     EndTextUI.text = "KAMU KALAH";
                 }
                 if (scoreGame.Score > scoreGame.MaxScore)
@@ -147,6 +165,20 @@ public class GameManagement : MonoBehaviour
         animLoadLevel.animLevel.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void NextLevel(string LevelName)
+    {
+        FindObjectOfType<AudioManager>().Play("Button");
+        scoreGame.SaveGame();
+        StartCoroutine(NextLevelAnim(LevelName));
+    }
+
+    IEnumerator NextLevelAnim(string LevelName)
+    {
+        animLoadLevel.animLevel.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(LevelName);
     }
 
     public void EndThisGame()

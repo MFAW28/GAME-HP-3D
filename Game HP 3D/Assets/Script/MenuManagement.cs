@@ -51,6 +51,8 @@ public class MenuManagement : MonoBehaviour
         LevelGet = scoreController.LevelGame;
         scorePrasyaratTextMenu.text = "Skor Prasyarat = " + ScorePrasyarat;
         scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
+
+        scoreController.Score = 0;
     }
 
     private void Update()
@@ -129,6 +131,7 @@ public class MenuManagement : MonoBehaviour
     public void gotoLevel(string LevelName)
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        scoreController.SaveGame();
         StartCoroutine(gotoLevelAnim(LevelName));
     }
 
