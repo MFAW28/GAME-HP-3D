@@ -8,7 +8,7 @@ public class LocateLevel : MonoBehaviour
     public int Level;
     public int NextLevel;
 
-    private void Start()
+    private void Awake()
     {
         GameManagement.GamePlay = true;
     }

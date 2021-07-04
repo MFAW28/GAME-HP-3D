@@ -47,17 +47,16 @@ public class MenuManagement : MonoBehaviour
         animLoadLevel = FindObjectOfType<LoadLevel>();
         scoreController = GetComponent<ScoreController>();
 
-        ScorePrasyarat = scoreController.ScorePrasyarat;
-        LevelGet = scoreController.LevelGame;
-        scorePrasyaratTextMenu.text = "Skor Prasyarat = " + ScorePrasyarat;
-        scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
-
         scoreController.Score = 0;
     }
 
     private void Update()
     {
-        if (LevelGet == 0)
+
+        scorePrasyaratTextMenu.text = "Skor Prasyarat = " + scoreController.ScorePrasyarat;
+        scorePrasyaratTextMateri.text = "Skor Prasyarat = " + scoreController.ScorePrasyarat;
+
+        if (scoreController.LevelGame == 0)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = false;
@@ -67,7 +66,7 @@ public class MenuManagement : MonoBehaviour
             BtnChangeColor[2].interactable = false;
 
         }
-        else if (LevelGet == 1)
+        else if (scoreController.LevelGame == 1)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = true;
@@ -77,7 +76,7 @@ public class MenuManagement : MonoBehaviour
             BtnChangeColor[1].interactable = false;
             BtnChangeColor[2].interactable = false;
         }
-        else if (LevelGet == 2)
+        else if (scoreController.LevelGame == 2)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = true;
@@ -87,7 +86,7 @@ public class MenuManagement : MonoBehaviour
             BtnChangeColor[1].interactable = false;
             BtnChangeColor[2].interactable = false;
         }
-        else if (LevelGet > 3)
+        else if (scoreController.LevelGame > 2)
         {
             BtnLevelPickUI[0].interactable = true;
             BtnLevelPickUI[1].interactable = true;
@@ -104,7 +103,6 @@ public class MenuManagement : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Button");
         if (ScorePrasyarat >= MinimumScorePrasyarat)
         {
-            FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
             MaterialController materialController = FindObjectOfType<MaterialController>();
             materialController.PickColour();
             StartCoroutine(NewGameAnim());
@@ -131,6 +129,7 @@ public class MenuManagement : MonoBehaviour
     public void gotoLevel(string LevelName)
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
         scoreController.SaveGame();
         StartCoroutine(gotoLevelAnim(LevelName));
     }

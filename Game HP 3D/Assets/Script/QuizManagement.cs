@@ -41,7 +41,7 @@ public class QuizManagement : MonoBehaviour
         quizSelect = FindObjectOfType<QuizSelect>();
         if (!GameManagement.GameTutorial)
         {
-            qnAStudy = GameObject.Find("Quiz1").GetComponent<QnAStudy>();
+            qnAStudy = FindObjectOfType<QnAStudy>();
             generateQuestions();
         }
         else
@@ -67,7 +67,7 @@ public class QuizManagement : MonoBehaviour
             JawabanBenarTextEnd.text = "= " + jawabanBenarFull;
             JawabanSalahTextEnd.text = "" + jawabanSalahFull;
             qnAStudy = FindObjectOfType<QnAStudy>();
-            if (qnAStudy.QnA.Count < 0)
+            if (qnAStudy.QnA.Count <= 0)
             {
                 FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
                 FindObjectOfType<Spawner>().maxEnemy = 10;
@@ -162,7 +162,7 @@ public class QuizManagement : MonoBehaviour
         {
             scoreGame.Score += NilaiJawabBenar;
 
-            jawabanBenar += 1;
+            jawabanBenar =+ 1;
             jawabanBenarFull += 1;
             FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
             if (qnAStudy.QnA.Count > 0)

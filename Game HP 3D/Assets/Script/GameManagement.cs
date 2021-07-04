@@ -16,6 +16,9 @@ public class GameManagement : MonoBehaviour
     public static bool GameWin;
     public static bool GameLose;
 
+    [SerializeField] private TimerController timerController;
+    public Text TimerText;
+
     //pause in midgame
     [SerializeField] private GameObject ExitUI;
 
@@ -34,9 +37,12 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
+        
         if (GamePlay)
         {
             FindObjectOfType<AudioManager>().Play("SoundGame");
+            timerController = this.GetComponent<TimerController>();
+            scoreGame = FindObjectOfType<ScoreController>();
             GameIsStarted = true;
             GameTutorial = false;
             GameIsPaused = false;
@@ -45,16 +51,18 @@ public class GameManagement : MonoBehaviour
             GameLose = false;
             countEnemy = 0;
 
-            scoreGame = FindObjectOfType<ScoreController>();
             ExitUI.SetActive(false);
             DeathUI.SetActive(false);
-            BtnNextLevel.SetActive(false);
-            GiftText.SetActive(false);
             MaterialController material = FindObjectOfType<MaterialController>();
             material.LoadPlayerData();
 
             animLoadLevel = FindObjectOfType<LoadLevel>();
             spawner = FindObjectOfType<Spawner>();
+            if (!GameIsStarted)
+            {
+                BtnNextLevel.SetActive(false);
+                GiftText.SetActive(false);
+            }
         }
     }
 
@@ -62,8 +70,18 @@ public class GameManagement : MonoBehaviour
     {
         if (GamePlay)
         {
+            if (!GameIsStarted)
+            {
+                TimerText.text = timerController.time.ToString(@"mm\:ss");
+                if (timerController.currentTime <= 0)
+                {
+                    GameEnd = true;
+                }
+            }
+
             if (GameEnd == true)
             {
+                timerController.StopTimer();
                 GameIsPaused = true;
                 if (GameWin)
                 {
@@ -106,6 +124,7 @@ public class GameManagement : MonoBehaviour
     public void openDoor()
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        timerController.StartTimer();
         GameIsStarted = false;
     }
 

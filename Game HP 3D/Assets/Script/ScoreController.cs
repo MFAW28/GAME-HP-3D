@@ -15,12 +15,14 @@ public class ScoreController : MonoBehaviour
     public Text TextMaxScore;
     
     private LocateLevel LevelthisGame;
-    
 
+    private void Awake()
+    {
+        LoadGame();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        LoadGame();
         if (!GameManagement.GameTutorial)
         {
             LevelthisGame = GetComponent<LocateLevel>();
@@ -42,6 +44,7 @@ public class ScoreController : MonoBehaviour
         Score = data.ScoreGame;
         MaxScore = data.MaxScorePlayer;
         LevelGame = data.DataLevel;
+        ScorePrasyarat = data.ScorePrasyarat;
         //Money = data.MoneyPlayer;
     }
 

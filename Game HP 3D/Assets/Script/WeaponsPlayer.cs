@@ -165,6 +165,7 @@ public class WeaponsPlayer : MonoBehaviour
         if (!GameManagement.GameTutorial && GameManagement.GameIsStarted)
         {
             doorBtnUI.SetActive(true);
+            reachChest.SetActive(true);
         }
 
         if (!GameManagement.GameIsStarted)

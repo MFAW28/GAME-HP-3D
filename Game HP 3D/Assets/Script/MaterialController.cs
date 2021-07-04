@@ -8,7 +8,7 @@ public class MaterialController : MonoBehaviour
     [SerializeField] private Material[] AllMaterial;
     public int NumofMaterial;
 
-    void Start()
+    void Awake()
     {
         LoadPlayerData();
     }

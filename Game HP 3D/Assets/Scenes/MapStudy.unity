@@ -727,17 +727,17 @@ PrefabInstance:
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283153
+      value: 0.09283152
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000014557532
+      value: 0.0000000059914917
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000001106005
+      value: -0.00000010980185
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -757,17 +757,17 @@ PrefabInstance:
     - target: {fileID: 3654990308369119505, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283153
+      value: 0.09283152
       objectReference: {fileID: 0}
     - target: {fileID: 3654990308369119505, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000039021706
+      value: 0.000000004663871
       objectReference: {fileID: 0}
     - target: {fileID: 3654990308369119505, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000036855545
+      value: -0.000000004484202
       objectReference: {fileID: 0}
     - target: {fileID: 3654990308369119505, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -777,17 +777,17 @@ PrefabInstance:
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004663873
+      value: 0.000000004663871
       objectReference: {fileID: 0}
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000044842023
+      value: -0.000000004484202
       objectReference: {fileID: 0}
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283154
+      value: 0.09283153
       objectReference: {fileID: 0}
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -912,17 +912,17 @@ PrefabInstance:
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283153
+      value: 0.09283152
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000003526741
+      value: 0.0000000050393005
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000077122975
+      value: -0.000000008510945
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -995,6 +995,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8446739448965493690, guid: 6ea9b29ebfdb981479f86a6dce25335b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621625883186599853, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2014,11 +2019,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countEnemy: 0
   countChest: 0
+  timerController: {fileID: 0}
+  TimerText: {fileID: 0}
   ExitUI: {fileID: 13293263}
+  BtnNextLevel: {fileID: 0}
   DeathUI: {fileID: 13293262}
   scoreText: {fileID: 13293266}
   maxScoreText: {fileID: 13293265}
   EndTextUI: {fileID: 0}
+  GiftText: {fileID: 0}
 --- !u!114 &164269362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2035,6 +2044,7 @@ MonoBehaviour:
   MaxScore: 0
   Money: 0
   LevelGame: 0
+  ScorePrasyarat: 0
   TextScore: {fileID: 13293266}
   TextMaxScore: {fileID: 13293265}
 --- !u!1 &166230460

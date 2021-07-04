@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
     {
         if (GameManagement.GameIsStarted == false && GameManagement.GameIsPaused == false && GameManagement.GameEnd == false)
         {
-            if (GMGame.countEnemy < maxEnemy && TimeSpawnEnemy)
+            if (GMGame.countEnemy < maxEnemy && TimeSpawnEnemy == true)
             {
                 SpawnEnemy();
             }
@@ -97,8 +97,6 @@ public class Spawner : MonoBehaviour
     public void ResetChest()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        FindObjectOfType<ChestScript>().DestroyChest();
-        FindObjectOfType<QuizManagement>().ResetJawabanBenar();
         GMGame.countChest -= 1;
     }
 }

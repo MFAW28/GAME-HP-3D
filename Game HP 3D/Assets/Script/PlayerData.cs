@@ -22,5 +22,8 @@ public class PlayerData
     {
         MaxScorePlayer = scoreController.MaxScore;
         MoneyPlayer = scoreController.Money;
+        ScoreGame = scoreController.Score;
+        DataLevel = scoreController.LevelGame;
+        ScorePrasyarat = scoreController.ScorePrasyarat;
     }
 }

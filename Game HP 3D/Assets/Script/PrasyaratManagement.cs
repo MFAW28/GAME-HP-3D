@@ -72,13 +72,13 @@ public class PrasyaratManagement : MonoBehaviour
         if(score >= FindObjectOfType<ScoreController>().ScorePrasyarat)
         {
             FindObjectOfType<ScoreController>().ScorePrasyarat = score;
-            FindObjectOfType<ScoreController>().SaveGame();
         }
     }
 
     public void RestartTest()
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<ScoreController>().SaveGame();
         StartCoroutine(RestartTestAnim());
     }
 
@@ -95,6 +95,7 @@ public class PrasyaratManagement : MonoBehaviour
     public void MenuEndSyarat()
     {
         FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<ScoreController>().SaveGame();
         StartCoroutine(MenuEndAnim());
     }
 

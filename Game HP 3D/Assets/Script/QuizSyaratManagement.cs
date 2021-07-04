@@ -32,7 +32,7 @@ public class QuizSyaratManagement : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Button");
         StartCoroutine(correctAnswer());
-        prasyaratManagement.score += 1;
+        prasyaratManagement.score += 10;
         QnAsyarat.QnA.RemoveAt(currentQuestions);
     }
 

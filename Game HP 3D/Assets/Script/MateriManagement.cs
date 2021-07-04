@@ -32,9 +32,13 @@ public class MateriManagement : MonoBehaviour
     private LoadLevel animLoadLevel;
     private GameManagement GMGame;
 
-    private void Start()
+    private void Awake()
     {
         GameManagement.GamePlay = true;
+    }
+
+    private void Start()
+    {
         GameManagement.GameTutorial = true;
         FindObjectOfType<AudioManager>().Play("SoundPembukaan");
         AllButtonUI.SetActive(true);

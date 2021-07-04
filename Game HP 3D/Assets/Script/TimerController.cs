@@ -14,6 +14,7 @@ public class TimerController : MonoBehaviour
 
     void Start()
     {
+        timerActive = false;
         currentTime = startTime * 60;
     }
 
