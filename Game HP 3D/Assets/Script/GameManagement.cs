@@ -86,6 +86,7 @@ public class GameManagement : MonoBehaviour
                 if (GameWin)
                 {
                     BtnNextLevel.SetActive(true);
+                    scoreGame.ifWinGame();
                     GiftText.SetActive(true);
                     EndTextUI.text = "KAMU MENANG";
                     if(scoreGame.LevelGame == 1)
@@ -103,6 +104,7 @@ public class GameManagement : MonoBehaviour
                 if (GameLose)
                 {
                     BtnNextLevel.SetActive(false);
+                    scoreGame.ifLoseGame();
                     GiftText.SetActive(false);
                     EndTextUI.text = "KAMU KALAH";
                 }
@@ -113,7 +115,6 @@ public class GameManagement : MonoBehaviour
                 }
                 //scoreGame.Money += scoreGame.Score;
                 DeathUI.SetActive(true);
-                scoreGame.ifWinGame();
             }
 
             scoreText.text = "" + scoreGame.Score;

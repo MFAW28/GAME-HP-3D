@@ -12,6 +12,8 @@ public class MenuManagement : MonoBehaviour
     [SerializeField] private GameObject PickMapUI;
     [SerializeField] private GameObject ProfilUI;
 
+    private bool UpScorePrasyarat;
+
     public Text scorePrasyaratTextMenu;
     public Text scorePrasyaratTextMateri;
 
@@ -56,6 +58,15 @@ public class MenuManagement : MonoBehaviour
         scorePrasyaratTextMenu.text = "Skor Prasyarat = " + scoreController.ScorePrasyarat;
         scorePrasyaratTextMateri.text = "Skor Prasyarat = " + scoreController.ScorePrasyarat;
 
+        if (ScorePrasyarat >= MinimumScorePrasyarat)
+        {
+            UpScorePrasyarat = true;
+        }
+        else
+        {
+            UpScorePrasyarat = false;
+        }
+
         if (scoreController.LevelGame == 0)
         {
             BtnLevelPickUI[0].interactable = true;
@@ -96,12 +107,14 @@ public class MenuManagement : MonoBehaviour
             BtnChangeColor[1].interactable = true;
             BtnChangeColor[2].interactable = true;
         }
+
+        ScorePrasyarat = scoreController.ScorePrasyarat;
     }
 
     public void NewGame()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        if (ScorePrasyarat >= MinimumScorePrasyarat)
+        if (UpScorePrasyarat == true)
         {
             MaterialController materialController = FindObjectOfType<MaterialController>();
             materialController.PickColour();
@@ -218,7 +231,7 @@ public class MenuManagement : MonoBehaviour
     public void PhytagorasMateri()
     {
         FindObjectOfType<AudioManager>().Play("Button");
-        if (ScorePrasyarat >= MinimumScorePrasyarat)
+        if (UpScorePrasyarat == true)
         {
             FindObjectOfType<AudioManager>().StopPlay("SoundPembukaan");
             MaterialController materialController = FindObjectOfType<MaterialController>();
@@ -303,7 +316,6 @@ public class MenuManagement : MonoBehaviour
         CustomizeUI.SetActive(false);
         PickMapUI.SetActive(false);
         ProfilUI.SetActive(false);
-        ScorePrasyarat = scoreController.ScorePrasyarat;
         scorePrasyaratTextMenu.text = "Skor Prasyarat = " + ScorePrasyarat;
         scorePrasyaratTextMateri.text = "Skor Prasyarat = " + ScorePrasyarat;
     }

@@ -49,13 +49,12 @@ public class ScoreController : MonoBehaviour
     }
 
     public void ifWinGame(){
-        if(LevelGame < LevelthisGame.Level){
-            LevelGame = LevelthisGame.NextLevel;
-        }
-        else
-        {
-            LevelGame = LevelthisGame.Level;
-        }
+        LevelGame = LevelthisGame.NextLevel;
+    }
+
+    public void ifLoseGame()
+    {
+        LevelGame = LevelthisGame.Level;
     }
 
     public void SaveGame()

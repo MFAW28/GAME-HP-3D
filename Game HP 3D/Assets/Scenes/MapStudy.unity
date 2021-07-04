@@ -727,17 +727,17 @@ PrefabInstance:
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283152
+      value: 0.09283153
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000059914917
+      value: 0.000000014557532
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000010980185
+      value: -0.0000001106005
       objectReference: {fileID: 0}
     - target: {fileID: 2748520903606459801, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -777,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004663871
+      value: 0.0000000046638715
       objectReference: {fileID: 0}
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -787,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283153
+      value: 0.09283154
       objectReference: {fileID: 0}
     - target: {fileID: 3925514613850560464, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -912,17 +912,17 @@ PrefabInstance:
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09283152
+      value: 0.09283153
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000050393005
+      value: -0.000000003526741
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008510945
+      value: -0.0000000077122975
       objectReference: {fileID: 0}
     - target: {fileID: 6469336683379371183, guid: 6ea9b29ebfdb981479f86a6dce25335b,
         type: 3}
@@ -4531,7 +4531,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &478606575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9143,7 +9143,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &745472504
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11018,7 +11018,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &944320029
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13235,7 +13235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &1178149967
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17590,7 +17590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &1483145753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19439,7 +19439,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &1636157949
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24522,7 +24522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Open Chest
+  m_Text: Buka Materi
 --- !u!222 &2112280327
 CanvasRenderer:
   m_ObjectHideFlags: 0

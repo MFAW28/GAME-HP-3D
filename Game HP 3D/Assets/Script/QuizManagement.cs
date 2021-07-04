@@ -162,7 +162,7 @@ public class QuizManagement : MonoBehaviour
         {
             scoreGame.Score += NilaiJawabBenar;
 
-            jawabanBenar =+ 1;
+            jawabanBenar += 1;
             jawabanBenarFull += 1;
             FindObjectOfType<Spawner>().TimeSpawnEnemy = true;
             if (qnAStudy.QnA.Count > 0)
@@ -194,11 +194,6 @@ public class QuizManagement : MonoBehaviour
             jawabanSalahFull += 1;
             FindObjectOfType<Spawner>().ResetChest();
         }
-    }
-
-    public void ResetJawabanBenar()
-    {
-        jawabanBenar = 0;
     }
 
     public void MunculPrefabsQuiz()
