@@ -1938,7 +1938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SK, KI, IPK
+  m_Text: SK, KD, IPK
 --- !u!222 &173867569
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13374,7 +13374,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Tes
+  m_Text: Mulai Tes
 --- !u!222 &1060957675
 CanvasRenderer:
   m_ObjectHideFlags: 0
